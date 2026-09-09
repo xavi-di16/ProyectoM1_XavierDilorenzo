@@ -1,0 +1,37 @@
+<html lang="es">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paleta De Colores</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Paleta de Colores</h1>
+        <p>Generador de Paletas Interactivo</p>
+
+      <!-- Selector de paletas de colores--> 
+        <div class="selector">
+            <label for="cantColores">Longitud de Paleta</label>
+            <select id="cantColores">
+                <option value="6">6 Colores</option>
+                <option value="8">8 Colores</option>
+                <option value="9">9 Colores</option>
+            </select>
+            <button id="btnGenerar">Generar Paleta</button>
+        </div>
+    </header>
+
+    <main>
+         <!-- Las paletas de colores se inyectan desde JS--> 
+        <section id="contenedorPaleta" class="paleta" aria-live="polite">
+         
+        </section>
+    </main>
+       <!--Microfeedback para cuando copias el color--> 
+      <div id="micro" class="micro" role="alert" aria-hidden="true">Color copiado al portapapeles</div>
+    
+ <script src="script.js"></script>
+</body>
+</html>
