@@ -18,11 +18,11 @@ html {
   scroll-behavior: smooth;
 }
 
-header{
-    text-align: center;
-    padding: 2rem 1rem;
-    font-family:'Times New Roman', Times, serif;
-    background-color:#1f1f1f;
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #1f1f1f; 
+  border-bottom: 1px solid #333;
 }
 
 body {
@@ -174,5 +174,59 @@ button:focus-visible, select:focus-visible{
 .micro.visible{
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+/* --- Diseño Responsivo (Móviles y Tablets) --- */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  .selector {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .selector select, 
+  .selector button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+
+  .paleta {
+    flex-direction: column; 
+  }
+
+  .tarjeta-color {
+    min-height: 15vh; 
+    width: 100%; 
+    flex-direction: row; 
+    justify-content: space-evenly;
+  }
+
+
+  .btn-candado {
+    position: static; 
+    margin-right: 1rem;
+  }
+
+  .info-color {
+    width: 60%;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .texto-hex {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+  }
+
+  .tarjeta-color:hover {
+    transform: none; 
+    z-index: auto;
+  }
 }
 
