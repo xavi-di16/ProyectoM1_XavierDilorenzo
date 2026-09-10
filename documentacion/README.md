@@ -2,6 +2,9 @@
 
 Este repositorio contiene la entrega del Proyecto Integrador correspondiente al Módulo 1. Consiste en el desarrollo de un MVP para *Colorfly Studio*, una agencia de branding que requiere un generador de paletas de colores estático, interactivo y rápido.
 
+# Ingreso a la Aplicacion
+**link/** :  https://xavi-di16.github.io/ProyectoM1_XavierDilorenzo/desarrollo
+
 ## Estructura del Proyecto
 
 Siguiendo las rúbricas de entrega, el repositorio está estructurado de la siguiente manera:
@@ -12,10 +15,10 @@ Siguiendo las rúbricas de entrega, el repositorio está estructurado de la sigu
 
 ## Tecnologías Utilizadas
 *   HTML5 (Etiquetas Semánticas y accesibilidad)
-*   CSS3 (Variables, Flexbox, UI, Animaciones sutiles)
+*   CSS (Variables, Flexbox, UI, Animaciones sutiles)
 *   JavaScript (DOM, Arrays, LocalStorage, Eventos)
 *   Git y GitHub (Control de versiones)
-*   Gemini AI 
+*   Gemini AI (Investigacion y Desarrollo)
 
 ## Extra Credits Implementados
 1.  **Bloqueo de colores:** Mediante un ícono de candado interactivo (🔓/🔒).
@@ -28,7 +31,7 @@ Siguiendo las rúbricas de entrega, el repositorio está estructurado de la sigu
 
 ## Documentación del uso de la IA
 
-Para agilizar el desarrollo del MVP y cumplir con las buenas prácticas, utilicé Inteligencia Artificial en dos casos técnicos puntuales del proyecto.
+Para agilizar el desarrollo del MVP (Producto Minimo Viable) y cumplir con las buenas prácticas, utilicé Inteligencia Artificial en dos casos técnicos puntuales del proyecto.
 
 ### Caso 1: Lógica matemática para convertir de formato HEX a HSL
 Dado que se requería generar colores completamente aleatorios en dos formatos distintos (HEX y HSL), y escribir la fórmula de conversión desde cero es lenta y propensa a errores matemáticos, utilicé IA para generar la función de transformación.
