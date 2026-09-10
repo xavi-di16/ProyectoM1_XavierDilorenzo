@@ -3,7 +3,7 @@
 Este repositorio contiene la entrega del Proyecto Integrador correspondiente al Módulo 1. Consiste en el desarrollo de un MVP para *Colorfly Studio*, una agencia de branding que requiere un generador de paletas de colores estático, interactivo y rápido.
 
 # Ingreso a la Aplicacion
-**link/** :  https://xavi-di16.github.io/ProyectoM1_XavierDilorenzo/desarrollo
+**Link** :  https://xavi-di16.github.io/ProyectoM1_XavierDilorenzo/desarrollo
 
 ## Estructura del Proyecto
 
