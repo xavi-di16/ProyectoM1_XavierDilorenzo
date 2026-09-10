@@ -2,9 +2,9 @@
 const selectorCant = document.getElementById('cantColores');
 const botonGenerar = document.getElementById('btnGenerar');
 const contenedorPaleta = document.getElementById('contenedorPaleta');
-const cartelCopy = document.getElementById('micro'); // Corregido: Se usa la variable correcta
+const cartelCopy = document.getElementById('micro'); 
 
-// --- Estado de la aplicación ---
+
 let paletaActual = [];
 
 // --- Utilidades ---
@@ -46,7 +46,7 @@ function guardarEnLocal() {
 
 function copiarAlPortapapeles(hex) {
     navigator.clipboard.writeText(hex).then(() => { 
-        mostrarMicro(`¡Color ${hex} copiado!`); // Corregido: Sintaxis limpia
+        mostrarMicro(`¡Color ${hex} copiado!`); 
     }).catch(err => { 
         console.error('Error al copiar: ', err);
     });
@@ -59,7 +59,7 @@ function mostrarMicro(mensaje) {
 
     setTimeout(() => {
         cartelCopy.classList.remove('visible');
-        cartelCopy.setAttribute('aria-hidden', 'true'); // Corregido: Vuelve a true por accesibilidad
+        cartelCopy.setAttribute('aria-hidden', 'true'); 
     }, 2000);
 }
 
@@ -81,11 +81,9 @@ function generarNuevaPaleta() {
     const nuevaPaleta = [];
 
     for (let i = 0; i < cantidad; i++) {
-        // Corregido: Typo de "bloquedo" a "bloqueado"
         if (paletaActual[i] && paletaActual[i].bloqueado) {
             nuevaPaleta.push(paletaActual[i]);
         } else {
-            // Corregido: Llamada a la función correcta para evitar recursividad infinita
             const hex = generarPaleta(); 
             nuevaPaleta.push({
                 hex: hex,
@@ -106,29 +104,29 @@ function alternarBloqueo(indice) {
     renderizarPaleta();
 }
 
-// --- Refactorización: Modularización del Nodo ---
+
 function crearTarjetaColor(colorObj, indice) {
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta-color';
     tarjeta.style.backgroundColor = colorObj.hex;
     
-    // Asignamos datos al DOM para utilizarlos en la delegación de eventos
+
     tarjeta.dataset.hex = colorObj.hex;
 
     const btnCandado = document.createElement('button');
-    // Le asignamos una clase adicional para mantener el diseño CSS
+
     btnCandado.className = `btn-candado`; 
     btnCandado.textContent = colorObj.bloqueado ? '🔒' : '🔓';
     btnCandado.setAttribute('aria-label', colorObj.bloqueado ? 'Desbloquear color' : 'Bloquear color');
     
-    // Asignamos datos específicos al botón
+
     btnCandado.dataset.accion = 'bloquear';
     btnCandado.dataset.indice = indice;
 
     const info = document.createElement('div');
     info.className = 'info-color';
 
-    // Corregido: Declaración en orden y propiedades respetando las minúsculas del objeto original
+      
     const textoHex = document.createElement('p');
     textoHex.className = 'texto-hex'; 
     textoHex.textContent = colorObj.hex; 
@@ -143,13 +141,12 @@ function crearTarjetaColor(colorObj, indice) {
     tarjeta.appendChild(btnCandado);
     tarjeta.appendChild(info);
 
-    return tarjeta; // Retorna el nodo completo sin inyectarlo aún
+    return tarjeta;
 }
 
 function renderizarPaleta() {
     contenedorPaleta.innerHTML = '';
     
-    // Buena práctica (Performance): Usar un fragmento evita reflows innecesarios del DOM por cada tarjeta
     const fragmento = document.createDocumentFragment();
 
     paletaActual.forEach((colorObj, indice) => {
@@ -160,20 +157,18 @@ function renderizarPaleta() {
     contenedorPaleta.appendChild(fragmento);
 }
 
-// --- Refactorización: Delegación de Eventos ---
-// Un solo "escuchador" para todo el contenedor de la paleta.
+
 contenedorPaleta.addEventListener('click', (evento) => {
-    // 1. Verificamos si se hizo clic en un candado
+   
     const btnCandado = evento.target.closest('[data-accion="bloquear"]');
     
     if (btnCandado) {
         evento.stopPropagation();
         const indice = parseInt(btnCandado.dataset.indice);
         alternarBloqueo(indice);
-        return; // Detenemos la ejecución aquí si fue un clic en el candado
+        return; 
     }
 
-    // 2. Si no fue el candado, verificamos si se hizo clic en cualquier parte de la tarjeta
     const tarjeta = evento.target.closest('.tarjeta-color');
     if (tarjeta) {
         const hex = tarjeta.dataset.hex;
@@ -181,9 +176,9 @@ contenedorPaleta.addEventListener('click', (evento) => {
     }
 });
 
-// Event listeners de controles principales
+
 botonGenerar.addEventListener('click', generarNuevaPaleta);
 selectorCant.addEventListener('change', generarNuevaPaleta);
 
-// Inicialización de la aplicación
+
 iniciarApp();
