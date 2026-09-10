@@ -7,7 +7,8 @@ Este repositorio contiene la entrega del Proyecto Integrador correspondiente al 
 Siguiendo las rúbricas de entrega, el repositorio está estructurado de la siguiente manera:
 
 *   **Desarrollo/**: Contiene el código fuente completo (`index.html`, `styles.css`, `script.js`). Para desplegar en GitHub Pages se recomienda mover estos archivos a la raíz o configurar la rama gh-pages apuntando a esta carpeta.
-*   **Documentacion/**: Contiene este `README.md` con las instrucciones, decisiones técnicas y la documentación de uso de IA. Deberás agregar aquí tu carpeta de capturas/GIFs del flujo principal.
+*   **Documentacion/**: Contiene este `README.md` con las instrucciones, decisiones técnicas y la documentación de uso de IA.
+*   flujo proximamente
 
 ## Tecnologías Utilizadas
 *   HTML5 (Etiquetas Semánticas y accesibilidad)
