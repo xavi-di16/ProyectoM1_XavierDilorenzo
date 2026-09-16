@@ -11,7 +11,8 @@ Siguiendo las rúbricas de entrega, el repositorio está estructurado de la sigu
 
 *   **Desarrollo/**: Contiene el código fuente completo (`index.html`, `styles.css`, `script.js`). Para desplegar en GitHub Pages se recomienda mover estos archivos a la raíz o configurar la rama gh-pages apuntando a esta carpeta.
 *   **Documentacion/**: Contiene este `README.md` con las instrucciones, decisiones técnicas y la documentación de uso de IA.
-*   flujo proximamente
+*   El Flujo se encuentra en la carpeta documentacion
+  
 
 ## Tecnologías Utilizadas
 *   HTML5 (Etiquetas Semánticas y accesibilidad)
