@@ -1,9 +1,9 @@
 // --- Variables del DOM ---
 const selectorCant = document.getElementById('cantColores');
+const selectorFormato = document.getElementById('formatoColor');
 const botonGenerar = document.getElementById('btnGenerar');
 const contenedorPaleta = document.getElementById('contenedorPaleta');
 const cartelCopy = document.getElementById('micro'); 
-
 
 let paletaActual = [];
 
@@ -44,9 +44,9 @@ function guardarEnLocal() {
     localStorage.setItem('paletaColor', JSON.stringify(paletaActual));
 }
 
-function copiarAlPortapapeles(hex) {
-    navigator.clipboard.writeText(hex).then(() => { 
-        mostrarMicro(`¡Color ${hex} copiado!`); 
+function copiarAlPortapapeles(texto) {
+    navigator.clipboard.writeText(texto).then(() => { 
+        mostrarMicro(`¡Color ${texto} copiado!`); 
     }).catch(err => { 
         console.error('Error al copiar: ', err);
     });
@@ -104,40 +104,31 @@ function alternarBloqueo(indice) {
     renderizarPaleta();
 }
 
-
 function crearTarjetaColor(colorObj, indice) {
     const tarjeta = document.createElement('div');
     tarjeta.className = 'tarjeta-color';
     tarjeta.style.backgroundColor = colorObj.hex;
     
-
     tarjeta.dataset.hex = colorObj.hex;
+    tarjeta.dataset.hsl = colorObj.hsl; 
 
     const btnCandado = document.createElement('button');
-
     btnCandado.className = `btn-candado`; 
     btnCandado.textContent = colorObj.bloqueado ? '🔒' : '🔓';
     btnCandado.setAttribute('aria-label', colorObj.bloqueado ? 'Desbloquear color' : 'Bloquear color');
-    
-
     btnCandado.dataset.accion = 'bloquear';
     btnCandado.dataset.indice = indice;
 
     const info = document.createElement('div');
     info.className = 'info-color';
-
       
-    const textoHex = document.createElement('p');
-    textoHex.className = 'texto-hex'; 
-    textoHex.textContent = colorObj.hex; 
+    const formatoElegido = selectorFormato.value; 
+    
+    const textoColor = document.createElement('p');
+    textoColor.className = 'texto-hex'; 
+    textoColor.textContent = formatoElegido === 'hex' ? colorObj.hex : colorObj.hsl; 
 
-    const textoHsl = document.createElement('p');
-    textoHsl.className = 'texto-hsl';
-    textoHsl.textContent = colorObj.hsl;
-
-    info.appendChild(textoHex);
-    info.appendChild(textoHsl);
-
+    info.appendChild(textoColor);
     tarjeta.appendChild(btnCandado);
     tarjeta.appendChild(info);
 
@@ -157,9 +148,7 @@ function renderizarPaleta() {
     contenedorPaleta.appendChild(fragmento);
 }
 
-
 contenedorPaleta.addEventListener('click', (evento) => {
-   
     const btnCandado = evento.target.closest('[data-accion="bloquear"]');
     
     if (btnCandado) {
@@ -171,14 +160,15 @@ contenedorPaleta.addEventListener('click', (evento) => {
 
     const tarjeta = evento.target.closest('.tarjeta-color');
     if (tarjeta) {
-        const hex = tarjeta.dataset.hex;
-        copiarAlPortapapeles(hex);
+        const formatoElegido = selectorFormato.value; 
+        const textoACopiar = tarjeta.dataset[formatoElegido]; 
+        
+        copiarAlPortapapeles(textoACopiar);
     }
 });
 
-
 botonGenerar.addEventListener('click', generarNuevaPaleta);
 selectorCant.addEventListener('change', generarNuevaPaleta);
-
+selectorFormato.addEventListener('change', renderizarPaleta);
 
 iniciarApp();
