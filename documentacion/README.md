@@ -28,6 +28,25 @@ Siguiendo las rúbricas de entrega, el repositorio está estructurado de la sigu
 4.  **Copiar al portapapeles:** Al hacer clic en una tarjeta, se copia automáticamente el valor HEX.
 5.  **Microfeedback (UI):** Implementación de un *Toast* (micro) animado para avisar que la acción de copiado fue exitosa.
 
+## Decisiones Técnicas Destacadas
+
+Durante el desarrollo de este MVP, se tomaron las siguientes decisiones arquitectónicas para garantizar un código limpio, escalable y con buen rendimiento:
+
+1.  **Manejo de Estado Centralizado :**
+    La lógica de la aplicación se basa en un único array llamado `paletaActual`. El DOM no almacena información (salvo atributos `data-` para eventos), sino que actúa únicamente como un reflejo visual de este estado. Esto facilita la sincronización con `localStorage` y evita inconsistencias en la interfaz.
+
+2.  **Delegación de Eventos :**
+    En lugar de asignar un `EventListener` individual a cada tarjeta de color o candado generado dinámicamente, se implementó un único "escuchador" en el contenedor padre (`#contenedorPaleta`). Usando `evento.target.closest()`, el script identifica qué elemento disparó la acción. Esto reduce drásticamente el consumo de memoria y evita fugas (memory leaks) al reconstruir la paleta.
+
+3.  **Optimización del DOM con `DocumentFragment`:**
+    Para la función `renderizarPaleta()`, se optó por agrupar todas las tarjetas nuevas dentro de un `DocumentFragment` temporal. De esta manera, se realiza una única inserción al DOM (`appendChild`) al final del ciclo, minimizando los "reflows" y "repaints" del navegador, lo que mejora el rendimiento de la aplicación web.
+
+4.  **Separación de Lógica en Funciones Puras e Impuras:**
+    Se aislaron las funciones matemáticas (como `generarPaleta` y `hexAHsl`) para que siempre devuelvan el mismo resultado sin alterar el exterior (funciones puras). Las funciones que manipulan el DOM o el LocalStorage se mantuvieron separadas, lo que hace que el código sea más predecible y fácil de depurar.
+
+5.  **Accesibilidad Dinámica (ARIA):**
+    Se implementó `aria-live="polite"` en el contenedor principal para asegurar que los lectores de pantalla notifiquen a los usuarios no videntes cuando los colores cambian, sin interrumpir abruptamente su navegación, cumpliendo con estándares básicos de accesibilidad (A11y).
+
 ---
 
 ## Documentación del uso de la IA
