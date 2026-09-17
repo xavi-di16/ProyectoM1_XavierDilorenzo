@@ -124,3 +124,10 @@ Para cumplir con el requerimiento de accesibilidad y UI del microfeedback (toast
         transform: translate(-50%, 0);
     }
     ```
+
+## Autor y Contacto
+
+MVP desarrollado por **Xavier Dilorenzo** como proyecto integrador y parte del portafolio personal.
+
+* 💻 **GitHub:** [xavi-di16](http://github.com/xavi-di16)
+* ✉️ **Email:** [xadilorenzo@gmail.com](mailto:xadilorenzo@gmail.com)
