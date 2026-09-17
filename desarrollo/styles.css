@@ -176,6 +176,33 @@ button:focus-visible, select:focus-visible{
   transform: translate(-50%, 0);
 }
 
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: auto; 
+  background-color: #1f1f1f;
+  border-top: 1px solid #333;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+  color: #cbd5e1;
+}
+
+.enlaces-contacto a {
+  color: var(--interaccion);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.enlaces-contacto a:hover {
+  color: var(--interaccion-hover);
+  text-decoration: underline;
+}
+
 /* --- Diseño Responsivo (Móviles y Tablets) --- */
 @media (max-width: 768px) {
   header h1 {
